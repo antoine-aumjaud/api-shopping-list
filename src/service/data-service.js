@@ -70,7 +70,7 @@ exports.removeShop = (shopName) => {
 };
 
 //clear all shops and items
-exports.clearAll = () => {
+exports.removeAllShops = () => {
     dataJson = {};
     _saveFile();
 };
@@ -82,6 +82,6 @@ exports.getItems = (shopName) => {
 };
 
 //get shops and items
-exports.getAll = () => {
+exports.getShops = () => {
     return dataJson; 
 };

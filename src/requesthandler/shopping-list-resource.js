@@ -8,7 +8,7 @@ module.exports = express.Router()
 
 //shop
 .get('/shop', (req, res) => {
-    const ret = dataService.getAll();
+    const ret = dataService.getShops();
     res.status(200).send(ret);
 })  
 .post('/shop', (req, res) => {
@@ -22,7 +22,7 @@ module.exports = express.Router()
     else res.status(200).send(ret);
 }) 
 .delete('/shop', (req, res) => {
-    dataService.clearAll();
+    dataService.removeAllShops();
     res.status(200).end();
 }) 
 
