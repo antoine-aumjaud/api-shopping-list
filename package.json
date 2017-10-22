@@ -1,0 +1,25 @@
+{
+  "name": "api-shopping-list",
+  "version": "1.0.0",
+  "description": "API Shopping list",
+  "license": "MIT",
+  "author": "Antoine Aumjaud",
+  "scripts": {
+    "build-config": "./build-config.sh",
+    "debug":     "npm run build-config && node --inspect src/server.js",
+    "start":     "npm run build-config && node    src/server.js",
+    "start-mon": "npm run build-config && nodemon src/server.js",
+    "test":      "npm run build-config && jasmine --config=test/jasmine.json"
+  },
+  "main": "src/server.js",
+  "repository": "https://github.com/antoine-aumjaud/api-shopping-list",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "express": "^4.15.3",
+    "fs": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "jasmine": "^2.6.0"
+  }
+}
+
