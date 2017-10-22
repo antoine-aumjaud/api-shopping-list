@@ -20,56 +20,68 @@ const _saveFile = () => {
 
 _loadFile();
 
-//add data 
+//add shop
+exports.addShop = (shopName) => {
+    if(!dataJson[shopName]) {
+        dataJson[shopName] = [];
+        _saveFile();
+        return true;
+    }
+    return false;
+};
+
+//add item 
 exports.addItem = (shopName, item) => {
-    //init shop list
-    if(!dataJson[shopName]) dataJson[shopName] = [];
-
-    //add item
-    dataJson[shopName].push(item);
-
-    //save file
-    _saveFile();
+    if(dataJson[shopName]) {
+        dataJson[shopName].push(item);
+        _saveFile();
+        return true;
+    }
+    return false;
 };
 
 //remove all items for a shop 
 exports.removeAllItems = (shopName) => {
     dataJson[shopName] = [];
-
-    //save file
     _saveFile();
 };
 
 //remove an item for a shop 
 exports.removeItem = (shopName, item) => {
-    let ret = false;
     if(dataJson[shopName]) {
         const index = dataJson[shopName].indexOf(item);
         if (index > -1) {
             dataJson[shopName].splice(index, 1);
-            ret = true;
+            _saveFile();
+            return true;
         }
     }    
-    //save file
-    _saveFile();
-
-    return ret;
+    return false;
 };
 
-//clear all data 
+//remove shop
+exports.removeShop = (shopName) => {
+    if(dataJson[shopName]) {
+        delete dataJson[shopName];
+        _saveFile();
+        return true;
+    }
+    return false;
+};
+
+//clear all shops and items
 exports.clearAll = () => {
     dataJson = {};
-
-    //save file
     _saveFile();
 };
 
-//get data
+
+//get item
 exports.getItems = (shopName) => {
     return dataJson[shopName]; 
 };
 
-//get data
+//get shops and items
 exports.getAll = () => {
     return dataJson; 
 };
