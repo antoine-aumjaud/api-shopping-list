@@ -34,8 +34,8 @@ module.exports = express.Router()
     else res.status(200).send(ret);
 })
 .post('/shop/:shopName/item', (req, res) => {
-    const found = dataService.addItem(req.params.shopName, req.body.item); 
-    if(!found)
+    const added = dataService.addItem(req.params.shopName, req.body.item); 
+    if(!added)
         res.status(404).end();
     else res.status(201).end();
 }) 
