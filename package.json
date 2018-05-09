@@ -6,10 +6,10 @@
   "author": "Antoine Aumjaud",
   "scripts": {
     "build-config": "./build-config.sh",
-    "debug":     "npm run build-config && cd src && node --inspect server.js",
-    "start":     "npm run build-config && cd src && node    server.js",
+    "debug": "npm run build-config && cd src && node --inspect server.js",
+    "start": "npm run build-config && cd src && node    server.js",
     "start-mon": "npm run build-config && cd src && nodemon server.js",
-    "test":      "npm run build-config && jasmine --config=test/jasmine.json"
+    "test": "npm run build-config && jasmine --config=test/jasmine.json"
   },
   "main": "src/server.js",
   "repository": "https://github.com/antoine-aumjaud/api-shopping-list",
@@ -22,4 +22,3 @@
     "jasmine": "^2.6.0"
   }
 }
-
