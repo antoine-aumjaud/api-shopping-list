@@ -6,6 +6,12 @@ const dataService = require('../service/data-service');
 
 module.exports = express.Router()
 
+//Reset cache
+.get('/resetCache', (req, res) => {
+    dataService.resetCache() 
+    res.status(200).send("done");
+})
+
 //shop
 .get('/shop', (req, res) => {
     const ret = dataService.getShops();

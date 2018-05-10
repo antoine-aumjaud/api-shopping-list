@@ -85,3 +85,7 @@ exports.getItems = (shopName) => {
 exports.getShops = () => {
     return dataJson; 
 };
+
+//reload file from disk
+exports.resetCache = _loadFile;
+
