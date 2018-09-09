@@ -13,48 +13,47 @@ module.exports = express.Router()
 })
 
 //shop
-.get('/shop', (req, res) => {
+.get('/shops', (req, res) => {
     const ret = dataService.getShops();
     res.status(200).send(ret);
 })  
-.post('/shop', (req, res) => {
+.post('/shops', (req, res) => {
     dataService.addShop(req.body.shopName); 
     res.status(201).end();
 })
-.delete('/shop/:shopName', (req, res) => {
+.delete('/shops/:shopName', (req, res) => {
     const ret = dataService.removeShop(req.params.shopName);
     if(!ret)
         res.status(404).end();
     else res.status(200).send(ret);
 }) 
-.delete('/shop', (req, res) => {
+.delete('/shops', (req, res) => {
     dataService.removeAllShops();
     res.status(200).end();
 }) 
 
 //item
-.get('/shop/:shopName/item', (req, res) => {
+.get('/shops/:shopName/items', (req, res) => {
     const ret = dataService.getItems(req.params.shopName);
     if(!ret || ret.size == 0)
         res.status(404).end();
     else res.status(200).send(ret);
 })
-.post('/shop/:shopName/item', (req, res) => {
+.post('/shops/:shopName/items', (req, res) => {
     const added = dataService.addItem(req.params.shopName, req.body.item); 
     if(!added)
         res.status(404).end();
     else res.status(201).end();
 }) 
-.delete('/shop/:shopName/item', (req, res) => {
+.delete('/shops/:shopName/items', (req, res) => {
     dataService.removeAllItems(req.params.shopName);
     res.status(200).end();
 })
-.delete('/shop/:shopName/item/:item', (req, res) => {
+.delete('/shops/:shopName/items/:item', (req, res) => {
     const found = dataService.removeItem(req.params.shopName, req.params.item);
     if(!found)
         res.status(404).end();
     else res.status(200).end();
 })   
-
 ;
 
